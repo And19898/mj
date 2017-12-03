@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#f27c55</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="navagationBarColor">#f27c55</color>
+
+    <color name="custom_imoocstyle">#eb4f38</color>
+    <color name="color_nomal">#bfbfbf</color>
+    <color name="color_select">#1296db</color>
+</resources>
