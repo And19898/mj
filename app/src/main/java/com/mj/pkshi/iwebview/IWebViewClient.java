@@ -10,13 +10,14 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.mj.pkshi.iwebview.cache.CacheResourceClient;
 import com.mj.pkshi.tools.LogUtil;
 import com.tencent.smtt.export.external.interfaces.SslError;
 import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
-public class IWebViewClient extends WebViewClient {
+public class IWebViewClient extends CacheResourceClient {
     protected IWebviewFragment fragment;
     protected Context context;
     protected ProgressBar lineProgressBar;

@@ -1,9 +1,11 @@
 package com.mj.pkshi.activitys;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.icu.text.UCharacterIterator;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,6 +16,8 @@ import com.mj.pkshi.databinding.ActivityWebviewBinding;
 import com.mj.pkshi.iwebview.IWebChromeClient;
 import com.mj.pkshi.iwebview.IWebViewClient;
 import com.mj.pkshi.iwebview.IWebviewFragment;
+import com.mj.pkshi.tools.AppManager;
+import com.mj.pkshi.tools.ToastUtils;
 import com.tencent.smtt.sdk.WebView;
 
 /**
@@ -97,5 +101,28 @@ public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implemen
             fragment.getWebView().reload();
         }
         return super.onOptionsItemSelected(item);
+    }
+    private long backTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if (fragment.getWebView().canGoBack()) {
+                fragment.getWebView().goBack();
+                return true;
+            }
+            if (backTime == 0) {
+                backTime = System.currentTimeMillis();
+                ToastUtils.toastWarn(this, getString(R.string.hybrid_exit_app));
+                return true;
+            }
+            if ((System.currentTimeMillis() - backTime) >= 2000) {
+                backTime = System.currentTimeMillis();
+                ToastUtils.toastWarn(this, getString(R.string.hybrid_exit_app));
+                return true;
+            }
+            AppManager.exitApp();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

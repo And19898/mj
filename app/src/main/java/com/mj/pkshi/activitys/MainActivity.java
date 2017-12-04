@@ -2,11 +2,14 @@ package com.mj.pkshi.activitys;
 
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.mj.pkshi.R;
 import com.mj.pkshi.adapters.MainPagerAdapter;
 import com.mj.pkshi.databinding.ActivityMainBinding;
+import com.mj.pkshi.tools.AppManager;
+import com.mj.pkshi.tools.ToastUtils;
 
 public class MainActivity extends UIActivity<ActivityMainBinding>{
     private MainPagerAdapter adapter;
@@ -29,5 +32,26 @@ public class MainActivity extends UIActivity<ActivityMainBinding>{
 
     public void changePosition(int position){
         databinding.tablayout.getTabAt(position).select();
+    }
+
+
+    private long backTime;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if (backTime == 0) {
+                backTime = System.currentTimeMillis();
+                ToastUtils.toastWarn(this, getString(R.string.hybrid_exit_app));
+                return true;
+            }
+            if ((System.currentTimeMillis() - backTime) >= 2000) {
+                backTime = System.currentTimeMillis();
+                ToastUtils.toastWarn(this, getString(R.string.hybrid_exit_app));
+                return true;
+            }
+            AppManager.exitApp();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
