@@ -1,12 +1,13 @@
 package com.mj.pkshi.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by xinru on 2017/12/3.
  */
 
-public class XiaohuaModel {
+public class XiaohuaModel implements Serializable{
     /**
      * showapi_res_code : 0
      * showapi_res_error :
@@ -41,7 +42,7 @@ public class XiaohuaModel {
         this.showapi_res_body = showapi_res_body;
     }
 
-    public static class ShowapiResBodyBean {
+    public static class ShowapiResBodyBean  implements Serializable{
         /**
          * allNum : 933
          * allPages : 47
@@ -96,7 +97,7 @@ public class XiaohuaModel {
             this.contentlist = contentlist;
         }
 
-        public static class ContentlistBean {
+        public static class ContentlistBean  implements Serializable{
             /**
              * ct : 　2015-07-10 05:54:00.000
              * text : 　　男生拉着女生沮丧着脸说，再给我一次机会，求求你！说好不提分手的！<br />

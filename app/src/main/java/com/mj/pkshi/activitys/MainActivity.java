@@ -21,8 +21,13 @@ public class MainActivity extends UIActivity<ActivityMainBinding>{
         tvTitle.setText(R.string.app_name);
         adapter = new MainPagerAdapter(this);
         databinding.viewpager.setAdapter(adapter);
+        databinding.viewpager.setOffscreenPageLimit(4);
         databinding.tablayout.setupWithViewPager(databinding.viewpager);
         databinding.tablayout.setTabMode(TabLayout.MODE_FIXED);
         adapter.addView(databinding.tablayout);
+    }
+
+    public void changePosition(int position){
+        databinding.tablayout.getTabAt(position).select();
     }
 }

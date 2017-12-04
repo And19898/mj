@@ -68,36 +68,51 @@
                 android:text="每日一笑"
                 android:textSize="16dp" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="6dp"
-            android:background="#cdcdcd"
-            />
+            android:background="#cdcdcd" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingTop="4dp"
-            android:gravity="center_vertical">
+            android:paddingTop="4dp">
+
             <View
                 android:layout_width="4dp"
                 android:layout_height="match_parent"
-                android:background="@color/color_select"/>
+                android:background="@color/color_select" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:textSize="16dp"
-                android:text="热门推荐"/>
+                android:text="热门推荐"
+                android:textSize="16dp" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="6dp"
-            android:background="#cdcdcd"
-            />
+            android:background="#cdcdcd" />
+
+        <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+            android:id="@+id/rl_listview_refresh"
+            style="@style/MatchMatch">
+
+            <ListView
+                android:id="@+id/lv_listview_data"
+                style="@style/MatchAuto"
+                android:divider="@mipmap/list_divider"
+                android:overScrollMode="never"
+                android:padding="5dp"
+                android:scrollbars="none" />
+        </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
     </LinearLayout>
 </layout>

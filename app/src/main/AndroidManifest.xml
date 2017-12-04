@@ -56,9 +56,22 @@
         <activity
             android:name=".activitys.XiaohuaActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:name=".activitys.XiaohuaDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activitys.AddTieziActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activitys.WeixinActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.MyMessageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.TieziDetailActivity"
             android:screenOrientation="portrait" />
     </application>
 

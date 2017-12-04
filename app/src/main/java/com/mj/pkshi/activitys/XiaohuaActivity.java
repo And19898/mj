@@ -1,5 +1,6 @@
 package com.mj.pkshi.activitys;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -19,6 +20,7 @@ import com.mj.pkshi.models.RefreshModel;
 import com.mj.pkshi.models.XiaohuaModel;
 import com.mj.pkshi.tools.LogUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.bingoogolapple.refreshlayout.BGAMoocStyleRefreshViewHolder;
@@ -112,7 +114,9 @@ public class XiaohuaActivity extends UIActivity<LayoutListviewBinding> implement
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent intent = new Intent(context, XiaohuaDetailActivity.class);
+        intent.putExtra("data", (Serializable) mAdapter.getData().get(position));
+        startActivity(intent);
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.mj.pkshi.R;
+import com.mj.pkshi.tools.SoftKeyboardUtils;
 
 public abstract class UIActivity<T extends ViewDataBinding> extends TimeOutActivity {
 
@@ -35,6 +36,7 @@ public abstract class UIActivity<T extends ViewDataBinding> extends TimeOutActiv
                 .fitsSystemWindows(true)
                 .keyboardEnable(true);
         dialog = new ProgressDialog(this);
+        dialog.setCanceledOnTouchOutside(false);
         dialog.setMessage("加载中...");
         immersionBar.init();
         context = this;
@@ -59,4 +61,10 @@ public abstract class UIActivity<T extends ViewDataBinding> extends TimeOutActiv
     int getConteneView();
 
     protected abstract void init();
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SoftKeyboardUtils.hideSoftKeyboard(this);
+    }
 }

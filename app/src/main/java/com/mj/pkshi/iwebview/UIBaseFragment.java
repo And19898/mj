@@ -1,5 +1,6 @@
 package com.mj.pkshi.iwebview;
 
+import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public abstract class UIBaseFragment<T extends ViewDataBinding> extends Fragment
     protected boolean isPrepared;
     protected boolean isLoaded;
     protected T databinding;
+    protected ProgressDialog dialog;
 
     public UIBaseFragment() {
     }
@@ -29,6 +31,14 @@ public abstract class UIBaseFragment<T extends ViewDataBinding> extends Fragment
         this.init();
         this.onVisible();
         return databinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dialog = new ProgressDialog(getActivity());
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setMessage("加载中....");
     }
 
     public void setUserVisibleHint(boolean isVisibleToUser) {
