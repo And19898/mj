@@ -7,6 +7,7 @@ import com.mj.pkshi.R;
 import com.mj.pkshi.adapters.CaipiaoAdapter;
 import com.mj.pkshi.adapters.FoundAdapter;
 import com.mj.pkshi.bmobquery.Config;
+import com.mj.pkshi.bmobquery.SysMsg;
 import com.mj.pkshi.bmobquery.User;
 import com.mj.pkshi.databinding.FragmentFoundBinding;
 import com.mj.pkshi.iwebview.UIBaseFragment;
@@ -61,10 +62,10 @@ public class FoundFragment extends UIBaseFragment<FragmentFoundBinding> implemen
     }
 
     private void query() {
-        BmobQuery<User> query = new BmobQuery<>();
-        query.findObjects(new FindListener<User>() {
+        BmobQuery<SysMsg> query = new BmobQuery<>();
+        query.findObjects(new FindListener<SysMsg>() {
             @Override
-            public void done(List<User> list, BmobException e) {
+            public void done(List<SysMsg> list, BmobException e) {
                 databinding.rlListviewRefresh.endRefreshing();
                 if (e == null) {
                     if (list != null && list.size() != 0) {

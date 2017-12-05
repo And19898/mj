@@ -20,7 +20,7 @@ import com.mj.pkshi.fragments.TuijianFragment;
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
     private AppCompatActivity context;
-    private String[] tab_titls = {"首页", "推荐", "发现", "我的"};
+    private String[] tab_titls = {"首页", "推荐", "消息", "我的"};
     private int[] ress = {R.drawable.selector_index, R.drawable.selector_tuijian, R.drawable.selector_faxian, R.drawable.selector_mine};
 
     public MainPagerAdapter(AppCompatActivity context) {

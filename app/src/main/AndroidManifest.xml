@@ -73,6 +73,14 @@
         <activity
             android:name=".activitys.TieziDetailActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.WXMeiwenActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activitys.ActivityUser"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

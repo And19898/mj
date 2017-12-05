@@ -27,10 +27,15 @@ import com.tencent.smtt.sdk.WebView;
 public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implements View.OnClickListener {
     private IWebviewFragment fragment;
 
-    public static void load(Context context, String url) {
+    public static void load(Context context, String url, boolean isShowBack) {
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra("url", url);
+        intent.putExtra("isShowBack", isShowBack);
         context.startActivity(intent);
+    }
+
+    public static void load(Context context, String url) {
+        load(context, url, false);
     }
 
     @Override
@@ -38,11 +43,17 @@ public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implemen
         return R.layout.activity_webview;
     }
 
+    private boolean isShowBack;
+
     @Override
     protected void init() {
         tvBack.setVisibility(View.GONE);
         tvBack.setOnClickListener(this);
         String url = getIntent().getStringExtra("url");
+        isShowBack = getIntent().getBooleanExtra("isShowBack", false);
+        if (isShowBack) {
+            tvBack.setVisibility(View.VISIBLE);
+        }
         fragment = (IWebviewFragment) getSupportFragmentManager().findFragmentById(R.id.webfragment);
         fragment.getWebView().loadUrl(url);
         fragment.setWebChromeClient(new IWebChromeClient(fragment) {
@@ -72,7 +83,8 @@ public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implemen
         if (fragment.getWebView().canGoBack()) {
             tvBack.setVisibility(View.VISIBLE);
         } else {
-            tvBack.setVisibility(View.GONE);
+            if (!isShowBack)
+                tvBack.setVisibility(View.GONE);
         }
     }
 
@@ -86,6 +98,7 @@ public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implemen
         if (fragment.getWebView().canGoBack()) {
             fragment.getWebView().goBack();
         }
+        if(isShowBack)finish();
     }
 
     @Override
@@ -102,10 +115,13 @@ public class WebViewActivity extends UIActivity<ActivityWebviewBinding> implemen
         }
         return super.onOptionsItemSelected(item);
     }
+
     private long backTime;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+        if (isShowBack) return super.onKeyDown(keyCode, event);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (fragment.getWebView().canGoBack()) {
                 fragment.getWebView().goBack();
                 return true;

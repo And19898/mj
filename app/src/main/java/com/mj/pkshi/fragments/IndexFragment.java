@@ -9,8 +9,10 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.mj.pkshi.R;
+import com.mj.pkshi.activitys.ActivityUser;
 import com.mj.pkshi.activitys.MainActivity;
 import com.mj.pkshi.activitys.TieziDetailActivity;
+import com.mj.pkshi.activitys.WXMeiwenActivity;
 import com.mj.pkshi.activitys.WeixinActivity;
 import com.mj.pkshi.activitys.XiaohuaActivity;
 import com.mj.pkshi.adapters.FoundAdapter;
@@ -33,7 +35,7 @@ import cn.bmob.v3.listener.FindListener;
  * Created by xinru on 2017/12/3.
  */
 
-public class IndexFragment extends UIBaseFragment<FragmentIndexBinding> implements View.OnClickListener, BGARefreshLayout.BGARefreshLayoutDelegate,AdapterView.OnItemClickListener {
+public class IndexFragment extends UIBaseFragment<FragmentIndexBinding> implements View.OnClickListener, BGARefreshLayout.BGARefreshLayoutDelegate, AdapterView.OnItemClickListener {
     private TieziAdapter adapter;
 
     public static IndexFragment getInstant() {
@@ -58,7 +60,7 @@ public class IndexFragment extends UIBaseFragment<FragmentIndexBinding> implemen
         databinding.weixin.setOnClickListener(this);
         databinding.xiaohua.setOnClickListener(this);
 
-        databinding.bannerGuide.setData(R.drawable.guide_1, R.drawable.guide_2, R.drawable.guide_3, R.drawable.guide_4, R.drawable.guide_5);
+        databinding.bannerGuide.setData(R.drawable.vip_club, R.drawable.guide_1, R.drawable.thmb8, R.drawable.guide_2);
 //        OkGo
 //                .<String>post("http://route.showapi.com/44-1")
 //                .params("showapi_appid", "51344")
@@ -76,12 +78,10 @@ public class IndexFragment extends UIBaseFragment<FragmentIndexBinding> implemen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tiezi:
-                MainActivity activity1 = (MainActivity) getActivity();
-                activity1.changePosition(1);
+                startActivity(new Intent(getContext(), WXMeiwenActivity.class));
                 break;
             case R.id.haoyou:
-                MainActivity activity = (MainActivity) getActivity();
-                activity.changePosition(2);
+                startActivity(new Intent(getContext(), ActivityUser.class));
                 break;
             case R.id.weixin:
                 startActivity(new Intent(getContext(), WeixinActivity.class));

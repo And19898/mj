@@ -32,7 +32,7 @@
                 android:drawablePadding="6dp"
                 android:drawableTop="@drawable/ic_tiezi"
                 android:gravity="center"
-                android:text="最新帖子"
+                android:text="微信美文"
                 android:textSize="16dp" />
 
             <TextView

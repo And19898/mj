@@ -50,6 +50,7 @@ public class MineFragment extends UIBaseFragment<FragmentMineBinding> implements
         databinding.tvGengxin.setOnClickListener(this);
         databinding.tvShezhi.setOnClickListener(this);
         databinding.tvFatie.setOnClickListener(this);
+        databinding.tvShare.setOnClickListener(this);
     }
 
     @Override
@@ -112,6 +113,7 @@ public class MineFragment extends UIBaseFragment<FragmentMineBinding> implements
                 startActivity(new Intent(getContext(), MyMessageActivity.class));
                 break;
             case R.id.tv_guanyu:
+                Toast.makeText(getActivity(), "敬请期待！", Toast.LENGTH_LONG).show();
                 break;
             case R.id.tv_gengxin:
                 dialog.show();
@@ -127,6 +129,9 @@ public class MineFragment extends UIBaseFragment<FragmentMineBinding> implements
                 break;
             case R.id.tv_shezhi:
                 Toast.makeText(getActivity(), "缓存已清理！", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.tv_share:
+                Toast.makeText(getActivity(), "敬请期待！", Toast.LENGTH_LONG).show();
                 break;
         }
     }
